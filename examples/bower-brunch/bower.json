@@ -1,0 +1,21 @@
+{
+  "name": "react-swipe-views-bower-brunch-example",
+  "version": "0.0.1",
+  "moduleType": [
+    "globals"
+  ],
+  "author": "Damien Varron <damien@varron.fr> (http://github.com/damusnet)",
+  "license": "MIT",
+  "homepage": "https://github.com/damusnet/react-swipe-views",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.1",
+    "react-swipe-views": "~0.0.1"
+  }
+}
