@@ -3,8 +3,8 @@
 import React from 'react';
 import App from './components/App';
 
+require('../../../lib/react-swipe-views.css');
 require('./main.css');
-require('../../../src/SwipeViews.css');
 
 React.initializeTouchEvents(true);
 
