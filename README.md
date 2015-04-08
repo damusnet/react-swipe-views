@@ -2,7 +2,11 @@
 
 A React component for binded Tabs and Swipeable Views
 
-See [Swipe Views](http://developer.android.com/design/patterns/swipe-views.html) on the Android Design Patterns website to understand the desired effect.
+See [Swipe Views](http://developer.android.com/design/patterns/swipe-views.html) on the Android Design Patterns website for inspiration.
+
+## Demo
+
+![Demo](docs/demo.gif)
 
 ## Quick Example
 
