@@ -3,12 +3,10 @@
   "version": "0.0.1",
   "description": "React Component for binded Tabs and Swipeable Views",
   "main": [
-    "./dist/SwipeViews.js",
-    "./src/SwipeViews.css"
+    "./lib/react-swipe-views.js",
+    "./lib/react-swipe-views.css"
   ],
-  "moduleType": [
-    "globals"
-  ],
+  "moduleType": "umd",
   "dependencies": {
     "react": "~0.13.1"
   },
@@ -25,6 +23,6 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "example"
+    "examples"
   ]
 }

@@ -4,8 +4,17 @@
   "description": "React Component for binded Tabs and Swipeable Views",
   "main": "./lib/SwipeViews.js",
   "scripts": {
-    "build:lib": "babel ./src/SwipeViews.js -w -o ./lib/SwipeViews.js -v",
-    "build:dist": "watchify -t babelify ./src/SwipeViews.js -s SwipeViews -o ./dist/SwipeViews.js -v -d"
+    "start": "npm run build && npm run watch",
+    "watch": "parallelshell 'npm run watch:js' 'npm run watch:css'",
+    "watch:js": "onchange './src/SwipeViews.js' -- npm run build:js",
+    "watch:css": "onchange './src/SwipeViews.css' -- npm run build:css",
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "npm run build:cjs && npm run build:umd && npm run min:js",
+    "build:cjs": "babel ./src/SwipeViews.js -o ./lib/SwipeViews.js -v",
+    "build:umd": "babel ./src/SwipeViews.js --modules umd -o ./lib/react-swipe-views.js -v",
+    "build:css": "cp ./src/SwipeViews.css ./lib/react-swipe-views.css && npm run min:css",
+    "min:js": "uglifyjs ./lib/react-swipe-views.js -o ./lib/react-swipe-views.min.js",
+    "min:css": "cleancss ./lib/react-swipe-views.css -o ./lib/react-swipe-views.min.css"
   },
   "repository": {
     "type": "git",
@@ -28,9 +37,10 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "watchify": "~3.1.0",
-    "browserify": "~9.0.7",
-    "babelify": "~6.0.1",
-    "babel": "~5.0.8"
+    "babel": "~5.0.8",
+    "uglify-js": "~2.4.19",
+    "clean-css": "~3.1.9",
+    "parallelshell": "~1.1.1",
+    "onchange": "~1.0.0"
   }
 }
