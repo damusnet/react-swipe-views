@@ -16,6 +16,14 @@ export default class SwipeViews extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this._selectIndex();
+  }
+
+  componentWillReceiveProps() {
+    this._selectIndex();
+  }
+
   render() {
     const swipeViewsInkStyle = {
       width: this.state.pageWidthPerCent + '%',
@@ -72,6 +80,25 @@ export default class SwipeViews extends React.Component {
     );
   }
 
+  _selectIndex() {
+    if (!this.context.router) {
+      return null;
+    }
+    this.props.children.map((child, index) => {
+      var to = child.props.title.props.to;
+      var isActive = this.context.router.isActive(to);
+      if (isActive) {
+        var translation = index * this.state.pageWidthPerCent;
+        this.setState({
+          selectedIndex: index,
+          translation: translation,
+          clientX: null,
+          animate: true
+        });
+      }
+    });
+  }
+
   _handleTouchMove(event) {
     var clientX = event.changedTouches[0].clientX;
     var dx = (clientX - this.state.clientX);
@@ -126,6 +153,12 @@ export default class SwipeViews extends React.Component {
       translation: translation,
       clientX: null,
       animate: true
+    }, () => {
+      if (this.context.router) {
+        var child = this.props.children[selectedIndex];
+        var to = child.props.title.props.to;
+        this.context.router.transitionTo(to);
+      }
     });
   }
 
@@ -141,3 +174,7 @@ export default class SwipeViews extends React.Component {
   }
 
 }
+
+SwipeViews.contextTypes = {
+  router: React.PropTypes.func
+};

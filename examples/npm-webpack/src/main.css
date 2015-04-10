@@ -23,7 +23,7 @@ section {
   padding: 10px;
 }
 
-.SwipeViewsTab {
+.SwipeViewsTab, .SwipeViewsTab a {
   font-size: 13px;
   color: #CCCCCC;
 }
