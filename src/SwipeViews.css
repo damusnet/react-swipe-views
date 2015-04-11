@@ -38,6 +38,9 @@
 .SwipeViewsTab > a {
   text-decoration: none;
   color: black;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .SwipeViewsTabs .active {
