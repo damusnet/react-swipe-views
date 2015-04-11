@@ -146,14 +146,17 @@ export default class SwipeViews extends React.Component {
     });
   }
 
-  _handleClick(selectedIndex) {
+  _handleClick(selectedIndex, event) {
     var translation = selectedIndex * this.state.pageWidthPerCent;
     this.setState({
       selectedIndex: selectedIndex,
       translation: translation,
       clientX: null,
       animate: true
-    }, this._transitionTo(selectedIndex));
+    });
+    if (event.target.localName === 'li') {
+      this._transitionTo(selectedIndex);
+    }
   }
 
   _handleTouchEnd() {
