@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "react": "~0.13.1",
-    "react-swipe-views": "~0.0.1"
+    "react-swipe-views": "~0.0.2"
   }
 }
