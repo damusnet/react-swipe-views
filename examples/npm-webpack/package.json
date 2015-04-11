@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-views-npm-webpack-example",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "An implementation example of react-swipe-views built with NPM and Webpack",
   "scripts": {
     "start": "node server.js"
@@ -15,7 +15,7 @@
   "dependencies": {
     "react": "^0.13.0",
     "react-router": "^0.13.2",
-    "react-swipe-views": "~0.0.2",
+    "react-swipe-views": "~0.0.3",
     "style-loader": "~0.9.0",
     "css-loader": "~0.9.1"
   }
