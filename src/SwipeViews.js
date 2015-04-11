@@ -99,6 +99,15 @@ export default class SwipeViews extends React.Component {
     });
   }
 
+  _transitionTo(selectedIndex) {
+    if (!this.context.router) {
+      return null;
+    }
+    var child = this.props.children[selectedIndex];
+    var to = child.props.title.props.to;
+    this.context.router.transitionTo(to);
+  }
+
   _handleTouchMove(event) {
     var clientX = event.changedTouches[0].clientX;
     var dx = (clientX - this.state.clientX);
@@ -142,7 +151,7 @@ export default class SwipeViews extends React.Component {
       translation: translation,
       clientX: null,
       animate: true
-    });
+    }, this._transitionTo(selectedIndex));
   }
 
   _handleTouchEnd() {
@@ -153,13 +162,7 @@ export default class SwipeViews extends React.Component {
       translation: translation,
       clientX: null,
       animate: true
-    }, () => {
-      if (this.context.router) {
-        var child = this.props.children[selectedIndex];
-        var to = child.props.title.props.to;
-        this.context.router.transitionTo(to);
-      }
-    });
+    }, this._transitionTo(selectedIndex));
   }
 
   _handleScroll() {
