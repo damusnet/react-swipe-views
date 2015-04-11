@@ -105,7 +105,9 @@ export default class SwipeViews extends React.Component {
     }
     var child = this.props.children[selectedIndex];
     var to = child.props.title.props.to;
-    this.context.router.transitionTo(to);
+    if (!this.context.router.isActive(to)) {
+      this.context.router.transitionTo(to);
+    }
   }
 
   _handleTouchMove(event) {
