@@ -6,13 +6,16 @@ export default class SwipeViews extends React.Component {
 
   constructor(props) {
     super(props);
+    const selectedIndex = this.props.selectedIndex || 0;
+    const pageWidthPerCent = 100 / this.props.children.length;
+    const translation = selectedIndex * pageWidthPerCent;
     this.state = {
-      selectedIndex: 0,
-      translation: 0,
+      selectedIndex,
+      pageWidthPerCent,
+      translation,
       clientX: null,
       animate: true,
-      pageWidth: window.innerWidth,
-      pageWidthPerCent: 100 / this.props.children.length
+      pageWidth: window.innerWidth
     };
   }
 
@@ -20,8 +23,8 @@ export default class SwipeViews extends React.Component {
     this._selectIndex();
   }
 
-  componentWillReceiveProps() {
-    this._selectIndex();
+  componentWillReceiveProps(nextProps) {
+    this._selectIndex(parseInt(nextProps.selectedIndex));
   }
 
   render() {
@@ -80,18 +83,27 @@ export default class SwipeViews extends React.Component {
     );
   }
 
-  _selectIndex() {
+  _selectIndex(selectedIndex) {
+    if (Number.isInteger(selectedIndex)) {
+      const translation = selectedIndex * this.state.pageWidthPerCent;
+      return this.setState({
+        selectedIndex,
+        translation,
+        clientX: null,
+        animate: true
+      });
+    }
     if (!this.context.router) {
       return null;
     }
-    this.props.children.map((child, index) => {
-      var to = child.props.title.props.to;
-      var isActive = this.context.router.isActive(to);
+    this.props.children.map((child, selectedIndex) => {
+      const to = child.props.title.props.to;
+      const isActive = this.context.router.isActive(to);
       if (isActive) {
-        var translation = index * this.state.pageWidthPerCent;
-        this.setState({
-          selectedIndex: index,
-          translation: translation,
+        const translation = selectedIndex * this.state.pageWidthPerCent;
+        return this.setState({
+          selectedIndex,
+          translation,
           clientX: null,
           animate: true
         });
@@ -100,29 +112,32 @@ export default class SwipeViews extends React.Component {
   }
 
   _transitionTo(selectedIndex) {
+    if (this.props.onIndexChange) {
+      this.props.onIndexChange(selectedIndex);
+    }
     if (!this.context.router) {
       return null;
     }
-    var child = this.props.children[selectedIndex];
-    var to = child.props.title.props.to;
+    const child = this.props.children[selectedIndex];
+    const to = child.props.title.props.to;
     if (!this.context.router.isActive(to)) {
       this.context.router.transitionTo(to);
     }
   }
 
   _handleTouchMove(event) {
-    var clientX = event.changedTouches[0].clientX;
-    var dx = (clientX - this.state.clientX);
-    var dxPerCent = dx / (this.state.pageWidth * this.props.children.length) * 100;
-    var translation = this.state.translation - dxPerCent;
-    var maxTranslation = this.state.pageWidthPerCent * (this.props.children.length - 1);
-    var selectedIndex = this.state.selectedIndex;
-    var previousTranslation = selectedIndex * this.state.pageWidthPerCent;
-    var tippingPoint = this.state.pageWidthPerCent * 0.3;
+    const clientX = event.changedTouches[0].clientX;
+    const dx = (clientX - this.state.clientX);
+    const dxPerCent = dx / (this.state.pageWidth * this.props.children.length) * 100;
+    let translation = this.state.translation - dxPerCent;
+    const maxTranslation = this.state.pageWidthPerCent * (this.props.children.length - 1);
+    let selectedIndex = this.state.selectedIndex;
+    const previousTranslation = selectedIndex * this.state.pageWidthPerCent;
+    const tippingPoint = this.state.pageWidthPerCent * 0.3;
 
     if (!this.state.clientX) {
       return this.setState({
-        clientX: clientX
+        clientX
       });
     }
 
@@ -139,18 +154,18 @@ export default class SwipeViews extends React.Component {
     }
 
     this.setState({
-      selectedIndex: selectedIndex,
-      translation: translation,
-      clientX: clientX,
+      selectedIndex,
+      translation,
+      clientX,
       animate: false
     });
   }
 
   _handleClick(selectedIndex, event) {
-    var translation = selectedIndex * this.state.pageWidthPerCent;
+    const translation = selectedIndex * this.state.pageWidthPerCent;
     this.setState({
-      selectedIndex: selectedIndex,
-      translation: translation,
+      selectedIndex,
+      translation,
       clientX: null,
       animate: true
     });
@@ -160,22 +175,22 @@ export default class SwipeViews extends React.Component {
   }
 
   _handleTouchEnd() {
-    var selectedIndex = this.state.selectedIndex;
-    var translation = selectedIndex * this.state.pageWidthPerCent;
+    const selectedIndex = this.state.selectedIndex;
+    const translation = selectedIndex * this.state.pageWidthPerCent;
     this.setState({
-      selectedIndex: selectedIndex,
-      translation: translation,
+      selectedIndex,
+      translation,
       clientX: null,
       animate: true
     }, this._transitionTo(selectedIndex));
   }
 
   _handleScroll() {
-    var selectedIndex = this.state.selectedIndex;
-    var translation = selectedIndex * this.state.pageWidthPerCent;
+    const selectedIndex = this.state.selectedIndex;
+    const translation = selectedIndex * this.state.pageWidthPerCent;
     this.setState({
-      selectedIndex: selectedIndex,
-      translation: translation,
+      selectedIndex,
+      translation,
       clientX: null,
       animate: true
     });

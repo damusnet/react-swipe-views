@@ -3,19 +3,46 @@ html, body {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  font-family: Roboto, sans-serif;
 }
 
 section {
   height: 100%;
 }
 
-.SwipeViewsTab {
-  font-family: Roboto, sans-serif;
-  font-size: 13px;
+.SwipeViewsInk {
+  background-color: #FF6950;
+}
+
+.SwipeViewsTabs .active, h1 {
+  color: #FF6950;
   font-weight: 500;
-  color: #CCCCCC;
 }
 
 .SwipeView {
   padding: 10px;
+}
+
+.SwipeViewsTab, .SwipeViewsTab a {
+  font-size: 13px;
+  color: #CCCCCC;
+}
+
+a {
+  color: #FF6950;
+  text-decoration: none;
+}
+
+#thanks li {
+  margin-bottom: 2em;
+}
+
+button {
+  margin-top: 20px;
+  color: white;
+  background-color: #FF6950;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
 }

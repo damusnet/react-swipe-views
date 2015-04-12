@@ -4,6 +4,8 @@ A React component for binded Tabs and Swipeable Views
 
 See [Swipe Views](http://developer.android.com/design/patterns/swipe-views.html) on the Android Design Patterns website for inspiration.
 
+Works with [React Router](https://github.com/rackt/react-router), as a pure component or as a standalone component.
+
 ## Demo
 
 ![Demo](docs/demo.gif)
@@ -51,12 +53,11 @@ bower install react-swipe-views --save
 
 ## Examples
 
-There are two example projects in the [/examples](examples) folder. One is using the npm module and webpack as a build tool, the other uses bower and brunch.
+There are two example projects in the [/examples](examples) folder. One is using the npm module and webpack as a build tool with react-router, the other uses bower and brunch as a pure component.
 
 ## TODO List
 
 - Allow for content to be inserted in the header
-- Play nice with react-router
 - Write tests
 
 ## Thanks
@@ -66,6 +67,7 @@ There are two example projects in the [/examples](examples) folder. One is using
 - [Babel](http://babeljs.io/) for removing so much pain from transpiling/compiling/bundling
 - [Dan Abramov](https://github.com/gaearon) for all the useful ressources, in this case [React Hot Boilerplate](https://github.com/gaearon/react-hot-boilerplate)
 - [Hassan Hayat](https://github.com/TheSeamau5)'s [Swipe Pages WebComponent](https://github.com/TheSeamau5/swipe-pages) for inspiration
+- [Ferran Negre](https://github.com/ferrannp) for helping me debug
 
 ## License
 

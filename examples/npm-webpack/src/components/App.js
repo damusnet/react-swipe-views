@@ -27,6 +27,7 @@ export default class App extends React.Component {
             <li><a href="http://babeljs.io/">Babel</a> for removing so much pain from transpiling/compiling/bundling</li>
             <li><a href="https://github.com/gaearon">Dan Abramov</a> for all the useful ressources, in this case <a href="https://github.com/gaearon/react-hot-boilerplate">React Hot Boilerplate</a></li>
             <li><a href="https://github.com/TheSeamau5">Hassan Hayat</a>'s <a href="https://github.com/TheSeamau5/swipe-pages">Swipe Pages WebComponent</a> for inspiration</li>
+            <li><a href="https://github.com/ferrannp">Ferran Negre</a> for helping me debug</li>
           </ul>
           <p style={{textAlign: 'center'}}><Link to="intro"><button>Back to Intro</button></Link></p>
         </div>
