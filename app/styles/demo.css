@@ -1,0 +1,44 @@
+#demo {
+  border: black solid 2px;
+  max-width: 375px;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.SwipeViewsInk {
+  background-color: #13747d;
+}
+
+.SwipeViewsTabs .active, h1 {
+  color: #13747d;
+  font-weight: 500;
+}
+
+.SwipeView {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.SwipeViewsTab, .SwipeViewsTab a {
+  font-size: 13px;
+  color: #CCCCCC;
+}
+
+a {
+  color: #13747d;
+  text-decoration: none;
+}
+
+#thanks li {
+  margin-bottom: 2em;
+}
+
+button {
+  margin-top: 20px;
+  color: white;
+  background-color: #13747d;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
+}

@@ -95,13 +95,13 @@ img {
   max-width:100%;
 }
 
-header {
+.header {
   width:270px;
   float:left;
   position:fixed;
 }
 
-header ul {
+.header ul {
   list-style:none;
   height:40px;
   
@@ -121,14 +121,14 @@ header ul {
   width:270px;
 }
 
-header li {
+.header li {
   width:89px;
   float:left;
   border-right:1px solid #d2d2d2;
   height:40px;
 }
 
-header ul a {
+.header ul a {
   line-height:1;
   font-size:11px;
   color:#999;
@@ -143,17 +143,17 @@ strong {
   font-weight:700;
 }
 
-header ul li + li {
+.header ul li + li {
   width:88px;
   border-left:1px solid #fff;
 }
 
-header ul li + li + li {
+.header ul li + li + li {
   border-right:none;
   width:89px;
 }
 
-header ul a strong {
+.header ul a strong {
   font-size:14px;
   display:block;
   color:#222;
@@ -190,13 +190,13 @@ footer {
     margin:0;
   }
   
-  header, section, footer {
+  .header, section, footer {
     float:none;
     position:static;
     width:auto;
   }
   
-  header {
+  .header {
     padding-right:320px;
   }
   
@@ -207,11 +207,11 @@ footer {
     margin:0 0 20px;
   }
   
-  header a small {
+  .header a small {
     display:inline;
   }
   
-  header ul {
+  .header ul {
     position:absolute;
     right:50px;
     top:52px;
@@ -223,11 +223,11 @@ footer {
     word-wrap:break-word;
   }
   
-  header {
+  .header {
     padding:0;
   }
   
-  header ul, header p.view {
+  .header ul, .header p.view {
     position:static;
   }
   
@@ -241,7 +241,7 @@ footer {
     padding:15px;
   }
   
-  header ul {
+  .header ul {
     display:none;
   }
 }
