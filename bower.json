@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "react": "~0.13.1",
-    "react-swipe-views": "~0.0.6"
+    "react-swipe-views": "~0.0.9",
+    "babel-polyfill": "~0.0.1"
   }
 }
