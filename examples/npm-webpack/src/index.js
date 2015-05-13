@@ -6,6 +6,7 @@ import App from './components/App';
 
 require('../../../lib/react-swipe-views.css');
 require('./main.css');
+require('babel/polyfill');
 
 React.initializeTouchEvents(true);
 

@@ -35,7 +35,9 @@ export default class SwipeViews extends React.Component {
     };
     const swipeViewsStyle = {
       transform: 'translateX(-' + this.state.translation + '%)',
+      WebkitTransform: 'translateX(-' + this.state.translation + '%)',
       transitionProperty: this.state.animate ? 'all' : 'none',
+      WebkitTransitionProperty: this.state.animate ? 'all' : 'none',
       width: this.props.children.length * 100 + '%'
     };
 

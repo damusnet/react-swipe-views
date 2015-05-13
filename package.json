@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-views",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "React Component for binded Tabs and Swipeable Views",
   "main": "./lib/SwipeViews.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "build:js": "npm run build:cjs && npm run build:umd && npm run min:js",
     "build:cjs": "babel ./src/SwipeViews.js -o ./lib/SwipeViews.js -v",
     "build:umd": "babel ./src/SwipeViews.js --modules umd -o ./lib/react-swipe-views.js -v",
-    "build:css": "cp ./src/SwipeViews.css ./lib/react-swipe-views.css && npm run min:css",
+    "build:css": "autoprefixer ./src/SwipeViews.css -o ./lib/react-swipe-views.css && npm run min:css",
     "min:js": "uglifyjs ./lib/react-swipe-views.js -o ./lib/react-swipe-views.min.js",
     "min:css": "cleancss ./lib/react-swipe-views.css -o ./lib/react-swipe-views.min.css"
   },
@@ -40,6 +40,7 @@
   "devDependencies": {
     "babel": "~5.0.8",
     "uglify-js": "~2.4.19",
+    "autoprefixer": "^5.1.1",
     "clean-css": "~3.1.9",
     "parallelshell": "~1.1.1",
     "onchange": "~1.0.0"
