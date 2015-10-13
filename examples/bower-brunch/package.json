@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-views-bower-brunch-example",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "An implementation example of react-swipe-views built with Bower and Brunch",
   "main": "app/scripts/main.js",
   "scripts": {
@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "babel-brunch": "^4.0.0",
+    "bower": "^1.5.3",
     "browser-sync-brunch": "0.0.9",
     "brunch": "^1.7.20",
     "css-brunch": "^1.7.0",

@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-views-bower-brunch-example",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "moduleType": [
     "globals"
   ],
@@ -15,8 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "react": "~0.13.1",
-    "react-swipe-views": "~0.0.9",
+    "react": "~0.14.0",
+    "react-swipe-views": "~0.0.10",
     "babel-polyfill": "~0.0.1"
   }
 }
