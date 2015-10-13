@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 
 export default class SwipeViews extends React.Component {
@@ -15,7 +13,7 @@ export default class SwipeViews extends React.Component {
       translation,
       clientX: null,
       animate: true,
-      pageWidth: window.innerWidth
+      pageWidth: window.innerWidth,
     };
   }
 
@@ -24,21 +22,21 @@ export default class SwipeViews extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this._selectIndex(parseInt(nextProps.selectedIndex));
+    this._selectIndex(parseInt(nextProps.selectedIndex, 10));
   }
 
   render() {
     const swipeViewsInkStyle = {
       width: this.state.pageWidthPerCent + '%',
       marginLeft: this.state.translation + '%',
-      transitionProperty: this.state.animate ? 'all' : 'none'
+      transitionProperty: this.state.animate ? 'all' : 'none',
     };
     const swipeViewsStyle = {
       transform: 'translateX(-' + this.state.translation + '%)',
       WebkitTransform: 'translateX(-' + this.state.translation + '%)',
       transitionProperty: this.state.animate ? 'all' : 'none',
       WebkitTransitionProperty: this.state.animate ? 'all' : 'none',
-      width: this.props.children.length * 100 + '%'
+      width: this.props.children.length * 100 + '%',
     };
 
     return (
@@ -47,7 +45,7 @@ export default class SwipeViews extends React.Component {
           <div className="SwipeViewsTabs">
             <ul>
               {this.props.children.map((child, index) => {
-                let className = (index === this.state.selectedIndex ? 'active' : '');
+                const className = (index === this.state.selectedIndex ? 'active' : '');
                 return (
                   <li
                     key={index}
@@ -92,22 +90,22 @@ export default class SwipeViews extends React.Component {
         selectedIndex,
         translation,
         clientX: null,
-        animate: true
+        animate: true,
       });
     }
     if (!this.context.router) {
       return null;
     }
-    this.props.children.map((child, selectedIndex) => {
+    this.props.children.map((child, index) => {
       const to = child.props.title.props.to;
       const isActive = this.context.router.isActive(to);
       if (isActive) {
-        const translation = selectedIndex * this.state.pageWidthPerCent;
+        const translation = index * this.state.pageWidthPerCent;
         return this.setState({
-          selectedIndex,
+          selectedIndex: index,
           translation,
           clientX: null,
-          animate: true
+          animate: true,
         });
       }
     });
@@ -139,7 +137,7 @@ export default class SwipeViews extends React.Component {
 
     if (!this.state.clientX) {
       return this.setState({
-        clientX
+        clientX,
       });
     }
 
@@ -159,7 +157,7 @@ export default class SwipeViews extends React.Component {
       selectedIndex,
       translation,
       clientX,
-      animate: false
+      animate: false,
     });
   }
 
@@ -169,7 +167,7 @@ export default class SwipeViews extends React.Component {
       selectedIndex,
       translation,
       clientX: null,
-      animate: true
+      animate: true,
     });
     if (event.target.localName === 'li') {
       this._transitionTo(selectedIndex);
@@ -183,7 +181,7 @@ export default class SwipeViews extends React.Component {
       selectedIndex,
       translation,
       clientX: null,
-      animate: true
+      animate: true,
     }, this._transitionTo(selectedIndex));
   }
 
@@ -194,12 +192,18 @@ export default class SwipeViews extends React.Component {
       selectedIndex,
       translation,
       clientX: null,
-      animate: true
+      animate: true,
     });
   }
 
 }
 
 SwipeViews.contextTypes = {
-  router: React.PropTypes.func
+  router: React.PropTypes.func,
+};
+
+SwipeViews.propTypes = {
+  children: React.PropTypes.array.isRequired,
+  selectedIndex: React.PropTypes.number,
+  onIndexChange: React.PropTypes.func,
 };

@@ -1,13 +1,17 @@
 {
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "parser": "babel-eslint",
-  "rules": {
-    "quotes": [2, "single"],
-    "strict": [2, "never"],
-    "no-underscore-dangle": [0],
-    "curly": [0]
-  }
+  "extends": "defaults/configurations/airbnb",
+  "plugins": [
+    "react"
+  ]
 }
