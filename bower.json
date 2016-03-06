@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-views",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "React Component for binded Tabs and Swipeable Views",
   "main": [
     "./lib/react-swipe-views.js",

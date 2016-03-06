@@ -15,7 +15,7 @@
   "dependencies": {
     "react": "^0.13.0",
     "react-router": "^0.13.2",
-    "react-swipe-views": "~0.0.10",
+    "react-swipe-views": "~0.0.11",
     "style-loader": "~0.9.0",
     "css-loader": "~0.9.1"
   }
