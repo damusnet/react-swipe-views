@@ -53,8 +53,6 @@ or
 bower install react-swipe-views --save
 ```
 
-For Safari compatibility, you need to include the Babel Polyfill for `Number.isInteger()`. See [Issue #4](https://github.com/damusnet/react-swipe-views/issues/4)
-
 ## Examples
 
 There are two example projects in the [/examples](examples) folder. One is using the npm module and webpack as a build tool with react-router, the other uses bower and brunch as a pure component.
