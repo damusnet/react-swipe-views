@@ -1,5 +1,11 @@
 import React from 'react';
 
+Number.isInteger = Number.isInteger || function(value) {
+  return typeof value === "number" && 
+    isFinite(value) && 
+    Math.floor(value) === value;
+};
+
 export default class SwipeViews extends React.Component {
 
   constructor(props) {
