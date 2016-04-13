@@ -11,7 +11,8 @@ export default class SwipeViews extends React.Component {
   constructor(props) {
     super(props);
     const selectedIndex = this.props.selectedIndex || 0;
-    const pageWidthPerCent = 100 / this.props.children.length;
+    const numChildren = React.Children.count(this.props.children)
+    const pageWidthPerCent = 100 / numChildren;
     const translation = selectedIndex * pageWidthPerCent;
     this.state = {
       selectedIndex,
@@ -42,7 +43,7 @@ export default class SwipeViews extends React.Component {
       WebkitTransform: 'translateX(-' + this.state.translation + '%)',
       transitionProperty: this.state.animate ? 'all' : 'none',
       WebkitTransitionProperty: this.state.animate ? 'all' : 'none',
-      width: this.props.children.length * 100 + '%',
+      width: React.Children.count(this.props.children) * 100 + '%',
     };
 
     return (
@@ -50,7 +51,7 @@ export default class SwipeViews extends React.Component {
         <header className="SwipeViewsHeader">
           <div className="SwipeViewsTabs">
             <ul>
-              {this.props.children.map((child, index) => {
+              {React.Children.map(this.props.children, (child, index) => {
                 const className = (index === this.state.selectedIndex ? 'active' : '');
                 return (
                   <li
@@ -72,7 +73,7 @@ export default class SwipeViews extends React.Component {
           onTouchMove={this._handleTouchMove.bind(this)}
           onTouchEnd={this._handleTouchEnd.bind(this)}
         >
-          {this.props.children.map((child, index) => {
+          {React.Children.map(this.props.children, (child, index) => {
             return (
               <div
                 className="SwipeView"
@@ -102,7 +103,7 @@ export default class SwipeViews extends React.Component {
     if (!this.context.router) {
       return null;
     }
-    this.props.children.map((child, index) => {
+    React.Children.map(this.props.children, (child, index) => {
       const to = child.props.title.props.to;
       const isActive = this.context.router.isActive(to);
       if (isActive) {
@@ -124,7 +125,7 @@ export default class SwipeViews extends React.Component {
     if (!this.context.router) {
       return null;
     }
-    const child = this.props.children[selectedIndex];
+    const child = React.Children.map(this.props.children, child => child)[selectedIndex];
     const to = child.props.title.props.to;
     if (!this.context.router.isActive(to)) {
       this.context.router.transitionTo(to);
@@ -134,9 +135,10 @@ export default class SwipeViews extends React.Component {
   _handleTouchMove(event) {
     const clientX = event.changedTouches[0].clientX;
     const dx = (clientX - this.state.clientX);
-    const dxPerCent = dx / (this.state.pageWidth * this.props.children.length) * 100;
+    const numChildren = React.Children.count(this.props.children)
+    const dxPerCent = dx / (this.state.pageWidth * numChildren) * 100;
     let translation = this.state.translation - dxPerCent;
-    const maxTranslation = this.state.pageWidthPerCent * (this.props.children.length - 1);
+    const maxTranslation = this.state.pageWidthPerCent * (numChildren - 1);
     let selectedIndex = this.state.selectedIndex;
     const previousTranslation = selectedIndex * this.state.pageWidthPerCent;
     const tippingPoint = this.state.pageWidthPerCent * 0.3;
