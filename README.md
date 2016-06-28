@@ -1,10 +1,18 @@
-# React Swipe Views
+>## WARNING DEPRECATION NOTICE
+
+>This library is not maintained anymore. Do not use it.
+
+>It has not been updated since React 0.14 and breaks with versions of React Router higher than 0.13.
+
+>Check out [react-swipeable-views](https://github.com/oliviertassinari/react-swipeable-views) instead.
+
+# React Swipe Views [![deprecated](https://img.shields.io/badge/status-deprecated-red.svg)](http://shields.io/)
 
 A React component for binded Tabs and Swipeable Views
 
 See [Swipe Views](http://developer.android.com/design/patterns/swipe-views.html) on the Android Design Patterns website for inspiration.
 
-Works with [React Router](https://github.com/rackt/react-router), as a pure component or as a standalone component.
+Works with optional [React Router](https://github.com/rackt/react-router) (v0.13.x only), as a pure component or as a standalone component.
 
 ## Demo
 
